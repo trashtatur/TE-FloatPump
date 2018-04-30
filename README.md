@@ -23,9 +23,10 @@ Webserver
 
 WiFi
   -> AP submit, then as Client
+  -> müC adden
 
 ## TBD
  
  Präsi
 
-müMC
+
