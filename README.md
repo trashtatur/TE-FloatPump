@@ -9,3 +9,23 @@ The princept behind this solution is to measure two decetral Forcesensors. If on
 ### 2. humidity sensor
 
 It´s simply measures the humidity in undistilled water, its possible to define an threshold level as event-trigger.
+
+
+### 3. ToDo
+
+## Andy 
+
+Webserver 
+  -> WebForm (keep in mind no filesystem use variables instead)
+  -> emailSend
+  
+## Tobi
+
+WiFi
+  -> AP submit, then as Client
+
+## TBD
+ 
+ Präsi
+
+müMC
