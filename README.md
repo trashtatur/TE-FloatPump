@@ -30,3 +30,6 @@ WiFi
  Präsi
 
 
+### Referenz
+
+https://arduino-esp8266.readthedocs.io/en/2.4.1/
