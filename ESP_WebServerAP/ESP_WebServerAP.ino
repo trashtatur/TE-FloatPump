@@ -3,8 +3,8 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 
-const char* ssid = "Boot";
-const char* password = "x3PT#/558?";
+const char* ssid = "floodSensor-AP";
+const char* password = "flood";
 
 ESP8266WebServer server(80);
 
@@ -34,36 +34,26 @@ void handleNotFound(){
 }
 
 void setup(void){
-  pinMode(led, OUTPUT);
-  digitalWrite(led, 0);
-  Serial.begin(115200);
-  WiFi.begin(ssid, password);
-  Serial.println("");
+    pinMode(led, OUTPUT);
+    digitalWrite(led, 0);
+    delay(1000);
+    Serial.begin(115200);
+    Serial.println();
+    Serial.print("Configuring access point...");
+    /* You can remove the password parameter if you want the AP to be open. */
+    WiFi.softAP(ssid);
 
-  // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to ");
-  Serial.println(ssid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-
-  if (MDNS.begin("esp8266")) {
-    Serial.println("MDNS responder started");
-  }
-
-  server.on("/", handleRoot);
-
-  server.on("/inline", [](){
+    IPAddress myIP = WiFi.softAPIP();
+    Serial.print("AP IP address: ");
+    Serial.println(myIP);
+    server.on("/", handleRoot);
+    server.onNotFound(handleNotFound);
+    server.on("/inline", [](){
     server.send(200, "text/plain", "this works as well");
-  });
+    });
+    delay(4000);
+    server.begin();
 
-  server.onNotFound(handleNotFound);
-
-  server.begin();
   Serial.println("HTTP server started");
 }
 
