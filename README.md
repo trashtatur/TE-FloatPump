@@ -33,3 +33,7 @@ WiFi
 ### Referenz
 
 https://arduino-esp8266.readthedocs.io/en/2.4.1/
+
+https://www.kloppenborg.net/images/blog/esp8266/esp8266-node-mcu-pinout.png
+
+http://www.instructables.com/id/ESP8266-GMail-Sender/
